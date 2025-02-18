@@ -41,7 +41,7 @@ func NewClient(serverUrl string, username string, password string) *Client {
 			Transport:     nil,
 			CheckRedirect: nil,
 			Jar:           jar,
-			Timeout:       10 * time.Second,
+			Timeout:       30 * time.Second,
 		},
 		serverUrl: serverUrl,
 		username:  username,
@@ -74,7 +74,7 @@ func (h *Client) Login() error {
 	if _, err := h.postForm(h.serverUrl+"/newTwoLoginAPIV2.do", url.Values{
 		"userName":          {h.username},
 		"password":          {h.password},
-		"newLogin":          {"1"},
+		"newLogin":          {"2"},
 		"phoneType":         {"android"},
 		"shinephoneVersion": {"8.2.6.0"},
 		"phoneSn":           {uuid.New().String()},
